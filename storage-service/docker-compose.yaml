@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest  # Используем официальный образ PostgreSQL
+    container_name: storage_service_postgres
+    environment:
+      POSTGRES_USER: postgres       # Имя пользователя PostgreSQL
+      POSTGRES_PASSWORD: postgres  # Пароль пользователя
+      POSTGRES_DB: users     # Имя базы данных
+    ports:
+      - "5432:5432"  # Пробрасываем порт 5432 на хост
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Сохраняем данные в volume
+    networks:
+      - postgres_network
+
+volumes:
+  postgres_data:  # Имя volume для хранения данных PostgreSQL
+
+networks:
+  postgres_network:  # Создаем сеть для контейнера
