@@ -8,7 +8,7 @@ import (
 
 type Config struct {
 	DbHost  string `yaml:"db_host"`
-	DbUser  string `yaml:"db_user"`
+	DbUser  string `yaml:"db_user" env-default:"postgres"`
 	DbPass  string `yaml:"db_pass"`
 	DbName  string `yaml:"db_name"`
 	DbPort  string `yaml:"db_port"`
